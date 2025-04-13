@@ -59,7 +59,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer("Bearer", options =>
     {
-        var key = builder.Configuration["Jwt:Key"];
+        var key = builder.Configuration["JWT__KEY"];
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = false,
