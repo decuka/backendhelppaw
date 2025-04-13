@@ -53,7 +53,18 @@ builder.Services.AddScoped<INewsService, NewsService>();
 
 // DB
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+{
+    var env = builder.Configuration;
+    var host = env["AUTH_DB_HOST"];
+    var port = env["AUTH_DB_PORT"];
+    var db = env["AUTH_DB_NAME"];
+    var user = env["AUTH_DB_USER"];
+    var pass = env["AUTH_DB_PASS"];
+
+    var connectionString = $"Host={host};Port={port};Database={db};Username={user};Password={pass}";
+
+    options.UseNpgsql(connectionString);
+});
 
 // JWT Auth
 builder.Services.AddAuthentication("Bearer")
