@@ -86,7 +86,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("https://your-frontend-url") // або "*", якщо тимчасово
+        policy.WithOrigins("https://helpaw.vercel.app") // або "*", якщо тимчасово
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
@@ -103,8 +103,8 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 
 app.UseHttpsRedirection();
 
-app.UseCors("AllowFrontend");
 app.UseRouting();
+app.UseCors("AllowFrontend");
 app.UseAuthentication();
 app.UseAuthorization();
 
