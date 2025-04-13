@@ -1,0 +1,6 @@
+@HelPaw_HostAddress = http://localhost:5245
+
+GET {{HelPaw_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

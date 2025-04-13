@@ -1,0 +1,45 @@
+# Build
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider / VS Code / JetBrains
+.idea/
+.vscode/
+*.code-workspace
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env
+.env.*
+
+# Docker
+**/publish/
+**/docker-compose.override.yml
+
+# EF Core tools
+*.dbmdl
+*.bak
+*.sql
+
+# Node (якщо фронт буде тут же)
+node_modules/
+
+# Test results
+TestResults/
+
+# Others
+*.swp
+*.tmp
