@@ -100,4 +100,6 @@ app.UseAuthorization();
 app.MapControllers();
 app.MapHub<ChatHub>("/chatHub");
 
+app.Urls.Add("http://*:8080");
+
 app.Run();
