@@ -71,6 +71,8 @@ builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer("Bearer", options =>
     {
         var key = builder.Configuration["JWT__KEY"];
+        if (string.IsNullOrEmpty(key))
+            throw new Exception("JWT__KEY is not set or is empty");
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = false,
