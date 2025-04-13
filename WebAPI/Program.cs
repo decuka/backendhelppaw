@@ -66,24 +66,21 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString);
 });
 
+var hardcodedKey = "XwKGzhTk9pgC5E8Ft1BIrK2KLL9zQk0G94hXzmbCJw";
+
 // JWT Auth
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer("Bearer", options =>
     {
-        var key = builder.Configuration["JWT__KEY"];
-        if (string.IsNullOrEmpty(key))
-            throw new Exception("JWT__KEY is not set or is empty");
-
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = false,
             ValidateAudience = false,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(hardcodedKey))
         };
     });
-
 // CORS
 builder.Services.AddCors(options =>
 {
